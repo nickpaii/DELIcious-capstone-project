@@ -1,5 +1,6 @@
 package com.pluralsight.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
@@ -10,8 +11,12 @@ public class Sandwich {
 
     private List<Topping> toppings;
 
-
-
+    public Sandwich(int size, boolean isToasted, String breadType) {
+        this.size = size;
+        this.isToasted = isToasted;
+        this.breadType = breadType;
+        this.toppings = new ArrayList<Topping>();
+    }
 
     private void calculateCost() {
 
@@ -25,7 +30,7 @@ public class Sandwich {
     private double sandwichSize(int size) {
 
         double baseSandwichCost = 0;
-
+        // switch case, may have to change to if
         switch (size) {
             case 4:
                 baseSandwichCost = 5.50;
@@ -46,6 +51,6 @@ public class Sandwich {
 
     private double sandwichSizeToppings(int size) {
 
-        
+
     }
 }
