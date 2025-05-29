@@ -2,9 +2,11 @@ package com.pluralsight.model;
 
 public class RegularTopping implements Topping {
 
-    private
+    private String name;
 
-
+    public RegularTopping(String name) {
+        this.name = name;
+    }
 
     @Override
     public double getCost(int size) {
@@ -12,12 +14,17 @@ public class RegularTopping implements Topping {
     }
 
     @Override
-    public void isExtra() {
-
+    public boolean isExtra() {
+        return false;
     }
 
     @Override
-    public void getToppingName() {
+    public String getToppingName() {
+        return name;
+    }
 
+    @Override
+    public String getType() {
+        return "regular";
     }
 }

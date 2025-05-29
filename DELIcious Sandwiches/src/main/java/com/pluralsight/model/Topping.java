@@ -5,7 +5,9 @@ public abstract interface Topping {
 
     double getCost(int size);
 
-    void isExtra();
+    boolean isExtra();
 
-    void getToppingName();
+    String getToppingName();
+
+    String getType();
 }
