@@ -18,39 +18,20 @@ public class Sandwich {
         this.toppings = new ArrayList<Topping>();
     }
 
-    private void calculateCost() {
+    public double calculateCost() {
 
-    }
+        double baseCost = 0.0;
+        if (size == 4) baseCost = 5.50;
+        else if (size == 8) baseCost = 7.00;
+        else if (size == 12) baseCost = 8.50;
 
-    private void buildSandwich() {
-
-    }
-
-
-    private double sandwichSize(int size) {
-
-        double baseSandwichCost = 0;
-        // switch case, may have to change to if
-        switch (size) {
-            case 4:
-                baseSandwichCost = 5.50;
-                break;
-            case 8:
-                 baseSandwichCost = 7.00;
-                break;
-            case 12:
-                 baseSandwichCost = 8.50;
-                break;
-            default:
-                System.out.println("Please enter a correct sandwich size.");
-                break;
+        for (Topping topping : toppings) {
+            baseCost += topping.getCost(size);
         }
-
-        return baseSandwichCost;
+        return baseCost;
     }
 
-    private double sandwichSizeToppings(int size) {
-
-
-    }
+    public void addTopping(Topping topping) {
+        toppings.add(topping);
+   }
 }
