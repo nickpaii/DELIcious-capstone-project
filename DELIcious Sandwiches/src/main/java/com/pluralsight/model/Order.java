@@ -23,6 +23,9 @@ public class Order {
         this.drinkSize = 0;
     }
 
+    public void addSandwich (Sandwich sandwich) {
+        sandwiches.add(sandwich);
+    }
 
     public void setChips(boolean chips) {
         this.chips = chips;

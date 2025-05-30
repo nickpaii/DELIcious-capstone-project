@@ -1,6 +1,6 @@
 package com.pluralsight.ui;
 
-import com.pluralsight.model.Order;
+import com.pluralsight.model.*;
 
 import java.util.Scanner;
 
@@ -78,6 +78,72 @@ public class UserInterface {
                     break;
                 default:
                     System.out.println("Please choose 1, 2, 3, 4, or 0. Thank you.\n");
+            }
+        }
+    }
+
+    private void addSandwich (Order order) {
+        System.out.print("What size sandwich would you like? (4 / 8 / 12): ");
+        int size = scanner.nextInt();
+
+        System.out.print("Choose your bread type (white / wheat / rye / wrap): ");
+        String breadType = scanner.next().toLowerCase();
+
+        System.out.print("Would you like your sandwich toasted? (Y/N): ");
+        boolean toasted = scanner.next().equalsIgnoreCase("y");
+
+        Sandwich sandwich = new Sandwich(size, breadType, toasted);
+        addToppings(sandwich);
+        order.addSandwich(sandwich);
+        System.out.println("Sandwich added!\n");
+    }
+
+    private void addToppings (Sandwich sandwich) {
+        boolean running = true;
+        while (running) {
+            System.out.print("Add a topping? (Y/N): ");
+            if (!scanner.next().equalsIgnoreCase("y")) {
+                running = false;
+                continue;
+            }
+
+            System.out.print("Select topping category (1 = meat, 2 = cheese, 3 = regular): ");
+            int toppingType = scanner.nextInt();
+            scanner.nextLine();
+            if (toppingType == 1 || toppingType == 2) {
+                String type = "";
+                if (toppingType == 1) {
+                    System.out.println("Which meat topping would you like? We have: Steak, Ham, Salami, Roast Beef, Chicken, and Bacon!");
+                    type = "meat";
+                }
+                else if (toppingType == 2) {
+                    System.out.println("What kind of cheese would you like? We have: American, Provolone, Cheddar and Swiss!");
+                    type = "cheese";
+                }
+
+                System.out.print("Choose your " + type + "topping: ");
+                String name = scanner.nextLine().toLowerCase();
+
+                System.out.print("Would you like extra " + name + "? (Y/N): ");
+                String extraInput = scanner.next();
+                boolean extra = false;
+                if (extraInput.equalsIgnoreCase("y")) {
+                    extra = true;
+                }
+
+                Topping topping = new PremiumTopping(name, type, extra);
+                sandwich.addTopping(topping);
+            }
+            else if (toppingType == 3) {
+                System.out.println("Which regular toppings would you like? We have: Lettuce, Peppers, " +
+                        "Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, and Mushrooms!");
+                System.out.print("Choose your toppings: ");
+                String name = scanner.next();
+                Topping topping = new RegularTopping(name.toLowerCase());
+                sandwich.addTopping(topping);
+            }
+            else {
+                System.out.println("Oops! That options doesn't exist, please try again!");
             }
         }
     }

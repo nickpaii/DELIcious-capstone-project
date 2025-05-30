@@ -11,7 +11,7 @@ public class Sandwich {
 
     private List<Topping> toppings;
 
-    public Sandwich(int size, boolean isToasted, String breadType) {
+    public Sandwich(int size, String breadType, boolean isToasted) {
         this.size = size;
         this.isToasted = isToasted;
         this.breadType = breadType;
