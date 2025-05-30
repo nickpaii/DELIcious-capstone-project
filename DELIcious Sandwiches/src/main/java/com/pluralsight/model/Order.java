@@ -17,8 +17,8 @@ public class Order {
     private Date orderTime;
 
     public Order() {
-        this.sandwiches = sandwiches;
-        this.orderTime = orderTime;
+        this.sandwiches = new ArrayList<Sandwich>();
+        this.orderTime = new Date();
         this.chips = chips;
         this.drinkSize = 0;
     }

@@ -121,7 +121,7 @@ public class UserInterface {
                     type = "cheese";
                 }
 
-                System.out.print("Choose your " + type + "topping: ");
+                System.out.print("Choose your " + type + " topping: ");
                 String name = scanner.nextLine().toLowerCase();
 
                 System.out.print("Would you like extra " + name + "? (Y/N): ");
@@ -145,6 +145,39 @@ public class UserInterface {
             else {
                 System.out.println("Oops! That options doesn't exist, please try again!");
             }
+        }
+    }
+
+    private void addDrink(Order order) {
+        System.out.print("Select drink size (1 = Small ($2.00), 2 = Medium ($2.50), 3 = Large ($3.00), 0 = None): ");
+        int size = scanner.nextInt();
+        order.setDrinkSize(size);
+        if (size > 0) {
+            System.out.println("Drink added!\n");
+        }
+    }
+
+    private void addChips (Order order) {
+        System.out.print("Add chips for $1.50? (Y/N): ");
+        String chipsInput = scanner.next();
+        boolean chips = false;
+        if (chipsInput.equalsIgnoreCase("y")){
+            chips = true;
+        }
+        order.setChips(chips);
+        if (chips) {
+            System.out.println("Chips added!\n");
+        }
+    }
+
+    private void checkout(Order order) {
+        System.out.println("\n====ORDER SUMMARY====");
+        System.out.println(order.printReceipt());
+        System.out.print("Save receipt? (Y/N): ");
+        String saveInput = scanner.next();
+        if (saveInput.equalsIgnoreCase("y")) {
+            order.saveReceipt("receipts");
+            System.out.println("Receipt saved!\n");
         }
     }
 }
