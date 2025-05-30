@@ -1,5 +1,9 @@
 package com.pluralsight.model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -12,11 +16,11 @@ public class Order {
     private boolean chips;
     private Date orderTime;
 
-    public Order(List<Sandwich> sandwiches, Date orderTime, boolean chips, int drinkSize) {
+    public Order() {
         this.sandwiches = sandwiches;
         this.orderTime = orderTime;
         this.chips = chips;
-        this.drinkSize = drinkSize;
+        this.drinkSize = 0;
     }
 
 
@@ -81,5 +85,20 @@ public class Order {
     public String getFileName() {
         SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd-hhmmss");
         return date.format(orderTime) + ".txt";
+    }
+
+    public void saveReceipt(String directoryPath) {
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+           directory.mkdirs();
+        }
+
+        File file = new File(directoryPath, getFileName());
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(printReceipt());
+        } catch (IOException e) {
+            System.out.println("Error: Could not save receipt: " + e.getMessage());
+        }
     }
 }

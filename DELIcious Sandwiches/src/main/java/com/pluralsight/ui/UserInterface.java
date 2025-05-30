@@ -1,5 +1,7 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.model.Order;
+
 import java.util.Scanner;
 
 public class UserInterface {
@@ -16,34 +18,9 @@ public class UserInterface {
 
         int choice = scanner.nextInt();
 
-
         switch (choice) {
             case 1:
-                boolean orderScreenRunning = true;
-                while(orderScreenRunning) {
-                    showOrderScreen();
-
-                    int orderChoice = scanner.nextInt();
-
-                    switch (orderChoice) {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                        case 0:
-                            System.out.println("Order successfully canceled.");
-                            orderScreenRunning = false;
-                            break;
-                        default:
-                            System.out.println("Please choose 1, 2, 3, 4 or 0.");
-                            break;
-                    }
-
-                }
+                startNewOrder();
                 break;
             case 0:
                 System.out.println("Thank you for visiting DELIcious Sandwiches! Bye!!");
@@ -73,5 +50,35 @@ public class UserInterface {
     System.out.println("4) Checkout");
     System.out.println("0) Cancel Order");
     System.out.print("Enter your choice: ");
+    }
+
+    private void startNewOrder() {
+        Order order = new Order();
+        boolean running = true;
+        while(running) {
+            showOrderScreen();
+            int choice = scanner.nextInt();
+            switch(choice) {
+                case 1:
+                    addSandwich(order);
+                    break;
+                case 2:
+                    addDrink(order);
+                    break;
+                case 3:
+                    addChips(order);
+                    break;
+                case 4:
+                    checkout(order);
+                    running = false;
+                    break;
+                case 0:
+                    System.out.println("Order was canceled successfully.\n");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Please choose 1, 2, 3, 4, or 0. Thank you.\n");
+            }
+        }
     }
 }
