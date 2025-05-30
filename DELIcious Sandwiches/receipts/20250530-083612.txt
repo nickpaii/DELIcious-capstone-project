@@ -1,0 +1,13 @@
+Order Time: 2025-05-30 08:36:12
+
+Sandwich 1: 4" white (Toasted)
+  - ham (extra)
+  - american
+Sandwich 2: 12" wheat
+  - chicken
+  - cheddar (extra)
+
+Drink: Large
+Chips: Yes
+
+Total Cost: $26.90

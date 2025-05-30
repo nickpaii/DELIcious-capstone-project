@@ -36,7 +36,7 @@ public class UserInterface {
 
 
     public void showHomeScreen() {
-    System.out.println("====HOME SCREEN====");
+    System.out.println("====WELCOME TO DELIcious SANDWICHES!====");
     System.out.println("1) New Order");
     System.out.println("0) Exit");
     System.out.print("Enter your choice: ");
@@ -82,7 +82,7 @@ public class UserInterface {
         }
     }
 
-    private void addSandwich (Order order) {
+    private void addSandwich(Order order) {
         System.out.print("What size sandwich would you like? (4 / 8 / 12): ");
         int size = scanner.nextInt();
 
@@ -98,7 +98,7 @@ public class UserInterface {
         System.out.println("Sandwich added!\n");
     }
 
-    private void addToppings (Sandwich sandwich) {
+    private void addToppings(Sandwich sandwich) {
         boolean running = true;
         while (running) {
             System.out.print("Add a topping? (Y/N): ");
@@ -157,7 +157,7 @@ public class UserInterface {
         }
     }
 
-    private void addChips (Order order) {
+    private void addChips(Order order) {
         System.out.print("Add chips for $1.50? (Y/N): ");
         String chipsInput = scanner.next();
         boolean chips = false;
