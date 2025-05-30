@@ -77,4 +77,9 @@ public class Order {
 
         return sb.toString();
     }
+
+    public String getFileName() {
+        SimpleDateFormat date = new SimpleDateFormat("yyyyMMdd-hhmmss");
+        return date.format(orderTime) + ".txt";
+    }
 }
