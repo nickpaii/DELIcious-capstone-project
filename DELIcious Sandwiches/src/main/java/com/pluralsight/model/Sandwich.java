@@ -34,4 +34,20 @@ public class Sandwich {
     public void addTopping(Topping topping) {
         toppings.add(topping);
    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public String getBreadType() {
+        return breadType;
+    }
+
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public boolean isToasted() {
+        return isToasted;
+    }
 }
